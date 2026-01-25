@@ -8,7 +8,91 @@
 	snsr-reset = <&portc 8 GPIO_ACTIVE_LOW>, <&portc 8 GPIO_ACTIVE_LOW>, <&portc 8 GPIO_ACTIVE_LOW>;
 };
 
-/ {
+/* Disable unused peripherals to save power */
 
+/* Wiegand interfaces - not used */
+&wiegand0 {
+	status = "disabled";
+};
+
+&wiegand1 {
+	status = "disabled";
+};
+
+&wiegand2 {
+	status = "disabled";
+};
+
+/* SAR ADC - not used */
+&saradc {
+	status = "disabled";
+};
+
+/* PWM - not used */
+&pwm0 {
+	status = "disabled";
+};
+
+&pwm1 {
+	status = "disabled";
+};
+
+&pwm2 {
+	status = "disabled";
+};
+
+&pwm3 {
+	status = "disabled";
+};
+
+/* Audio I2S - not used (i2s1 already deleted in qfn.dtsi) */
+&i2s0 {
+	status = "disabled";
+};
+
+&i2s2 {
+	status = "disabled";
+};
+
+&i2s3 {
+	status = "disabled";
+};
+
+/* Audio codecs - not used */
+&adc {
+	status = "disabled";
+};
+
+&dac {
+	status = "disabled";
+};
+
+&pdm {
+	status = "disabled";
+};
+
+/* Extra I2C buses - not used */
+&i2c2 {
+	status = "disabled";
+};
+
+&i2c3 {
+	status = "disabled";
+};
+
+&i2c4 {
+	status = "disabled";
+};
+
+/* Ethernet - WiFi-only device */
+&ethernet0 {
+	status = "disabled";
+};
+
+/ {
+	/* Delete audio sound cards */
+	/delete-node/ sound_adc;
+	/delete-node/ sound_dac;
+	/delete-node/ lt9611;
 };
 
